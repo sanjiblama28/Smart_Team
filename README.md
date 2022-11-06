@@ -149,7 +149,7 @@ Click the Apply All Operations green check button at the top.
 
 launch a terminal window, and navigate to the netplan directory on the microSD card and open the 50-cloud-init.yaml file and begin editing it with a superuser permission sudo.
 
-``
+```
 cd /media/$USER/writable/etc/netplan
 sudo nano 50-cloud-init.yaml
 ```
