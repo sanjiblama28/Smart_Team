@@ -102,8 +102,6 @@ source ~/.bashrc
 
 Following the preparation of a pen drive, downloading the correct image file for my hardware and the ROS version that is foxy, unzipping the downloaded image file, extracting the.img file, saving it to the local disk and burning the image file using a Raspberry Pi Imager was done. Then the following includes:
 
-https://github.com/sanjiblama28/San/blob/main/Veed%20Recording%20-%206%20November%202022%20(1).gif
-
 ```
 Click CHOOSE OS.
 Click Use custom and select the extracted .img file from local disk.
@@ -111,9 +109,9 @@ Click CHOOSE STORAGE and select the microSD.
 Click WRITE to start burning the image.
 ```
 
-Disks utility is included in the recent Ubuntu Desktop. Search for “Disks” and launch the app.
+![image](https://github.com/sanjiblama28/San/blob/main/Veed%20Recording%20-%206%20November%202022%20(1).gif)
 
-![image](https://user-images.githubusercontent.com/92040822/200148448-484915d9-4df5-4267-b28c-34c1eff519f1.png)
+Disks utility is included in the recent Ubuntu Desktop. Search for “Disks” and launch the app.
 
 ```
 Select the microSD card in the left panel.
@@ -121,6 +119,8 @@ Select Restore Disk Image option.
 Open the .img file from local disk.
 Click Start Restoring... > Restore button.
 ```
+
+![image](https://github.com/sanjiblama28/San/blob/main/Veed%20Recording%20-%206%20November%202022%20(2).gif)
 
 Then, the recovery partition is shrunk to lessen the recovery image file's size and speed up the microSD burn process.
 
@@ -133,6 +133,33 @@ sudo apt install gparted
 ![image](https://user-images.githubusercontent.com/92040822/200148610-46d5d475-1fe8-4e39-8df6-da0478224778.png)
 
 Next, gparted is launched. 
+
+```
+Select microSD card from the menu (mounted location may vary by system).
+Right click on the yellow partition.
+Select Resize/Move option.
+Drag the right edge of the partition to all the way to the right end.
+Click Resize/Move button.
+Click the Apply All Operations green check button at the top.
+```
+
+![image](https://github.com/sanjiblama28/San/blob/main/Veed%20Recording%20-%206%20November%202022%20(3).gif)
+
+# Configure the WiFi Network Setting
+
+launch a terminal window, and navigate to the netplan directory on the microSD card and open the 50-cloud-init.yaml file and begin editing it with a superuser permission sudo.
+
+``
+cd /media/$USER/writable/etc/netplan
+sudo nano 50-cloud-init.yaml
+```
+
+Replace the WIFI SSID and WIFI PASSWORD with your wifi SSID and password once the editor has been opened.
+
+Press Ctrl+S to save the document and Ctrl+X to close it.
+
+![image](https://github.com/sanjiblama28/San/blob/main/Veed%20Recording%20-%206%20November%202022%20(4).gif)
+
 
 
 
