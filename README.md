@@ -168,6 +168,11 @@ Press Ctrl+S to save the document and Ctrl+X to close it.
 
 The proposal preparation was the focus of our effort this week.
 
+# Week-11
+
+## Updated Presentation
+
+https://github.com/sanjiblama28/Smart_Team/blob/main/SMART_MOBILITY_Final_Porposal_GroupC.pptx
 
 
 
