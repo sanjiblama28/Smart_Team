@@ -11,7 +11,7 @@ Group C (Team Members)
 7. Pariyar Bijay (12194945)
 ```
 
-# Week-
+# Week-9
 
 # PC Setup using:
 - Ubuntu 20.04
@@ -161,6 +161,8 @@ Replace the WIFI SSID and WIFI PASSWORD with your wifi SSID and password once th
 Press Ctrl+S to save the document and Ctrl+X to close it.
 
 ![image](https://github.com/sanjiblama28/San/blob/main/Veed%20Recording%20-%206%20November%202022%20(4).gif)
+
+# Week-11
 
 ## Presentation
 
