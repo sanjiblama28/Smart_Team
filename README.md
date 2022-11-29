@@ -2,10 +2,10 @@
 
 ```
 Group C (Team Members)
-1. Dhungana Sudip (12194
-2. Deuja Ritik
-3. Adhikari Keshav
-4. Yusupov Elbek Yormukhammad Udli
+1. Dhungana Sudip (12194823)
+2. Deuja Ritik (12194824)
+3. Adhikari Keshav (12194874)
+4. Yusupov Elbek Yormukhammad Udli (12194909)
 5. Tamang Sanjib (12194939)
 6. Thapa Pradip (12194940)
 7. Pariyar Bijay (12194945)
@@ -112,19 +112,6 @@ Click WRITE to start burning the image.
 ```
 
 ![image](https://github.com/sanjiblama28/San/blob/main/Veed%20Recording%20-%206%20November%202022%20(1).gif)
-
-Disks utility is included in the recent Ubuntu Desktop. Search for “Disks” and launch the app.
-
-```
-Select the microSD card in the left panel.
-Select Restore Disk Image option.
-Open the .img file from local disk.
-Click Start Restoring... > Restore button.
-```
-
-![image](https://github.com/sanjiblama28/San/blob/main/Veed%20Recording%20-%206%20November%202022%20(2).gif)
-
-Then, the recovery partition is shrunk to lessen the recovery image file's size and speed up the microSD burn process.
 
 GParted GUI utility must first be installed using the provided code.
 
