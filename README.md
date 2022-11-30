@@ -136,7 +136,7 @@ Click the Apply All Operations green check button at the top.
 
 # Configure the WiFi Network Setting
 
-launch a terminal window, and navigate to the netplan directory on the microSD card and open the 50-cloud-init.yaml file and begin editing it with a superuser permission sudo.
+Launch a terminal window, and navigate to the netplan directory on the microSD card and open the 50-cloud-init.yaml file and begin editing it with a superuser permission sudo.
 
 ```
 cd /media/$USER/writable/etc/netplan
@@ -148,6 +148,48 @@ Replace the WIFI SSID and WIFI PASSWORD with your wifi SSID and password once th
 Press Ctrl+S to save the document and Ctrl+X to close it.
 
 ![image](https://github.com/sanjiblama28/San/blob/main/Veed%20Recording%20-%206%20November%202022%20(4).gif)
+![image](https://github.com/sanjiblama28/Github/blob/main/20221201_030911.jpg)
+![image](https://user-images.githubusercontent.com/92040822/204874933-6a3d4aa7-dc98-49bc-9071-e6c457810958.png)
+
+## ROS2 Network Configuration
+
+ROS DOMAIN ID must be matched between Remote PC and TurtleBot3 for communication under the same network environment in ROS2 DDS communication.
+In the .bashrc file, the default ROS Domain ID for TurtleBot3 is set to 30.
+Please change the ID to minimize confusion when there are identical IDs in the same network.
+
+```
+ROS_DOMAIN_ID=30 #TURTLEBOT3
+```
+
+## NEW LDS-02 Configuration
+
+Please follow the steps below on the TurtleBot3 SBC (Raspberry Pi).
+
+Install the LDS-02 driver and update the TurtleBot3 package.
+
+```
+sudo apt update
+sudo apt install libudev-dev
+cd ~/turtlebot3_ws/src
+git clone -b ros2-devel https://github.com/ROBOTIS-GIT/ld08_driver.git
+cd ~/turtlebot3_ws/src/turtlebot3 && git pull
+rm -r turtlebot3_cartographer turtlebot3_navigation2
+cd ~/turtlebot3_ws && colcon build --symlink-install
+```
+
+![image](https://user-images.githubusercontent.com/92040822/204878291-2f56bb73-87af-4312-a460-f5bb49b0a4c3.png)
+
+![image](https://user-images.githubusercontent.com/92040822/204879981-fdcf8708-b207-4d3e-a49f-adec275807a8.png)
+
+
+
+Now, 
+Export the LDS MODEL to the bashrc file. LDS-01 or LDS-02, depending on your LDS model.
+
+```
+echo 'export LDS_MODEL=LDS-02' >> ~/.bashrc
+source ~/.bashrc
+```
 
 # Week-10
 
