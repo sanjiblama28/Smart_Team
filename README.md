@@ -237,7 +237,7 @@ cd ~/opencr_update
 
 # SLAM
 
-## Run SLAM Node
+## 1. Run SLAM Node
 
 1. If the Bringup is not running on the TurtleBot3 SBC, launch the Bringup first. Skip this step if you have launched bringup previously.
 Open a new terminal from Remote PC with Ctrl + Alt + T and connect to Raspberry Pi with its IP address. The default password is turtlebot.
@@ -247,6 +247,113 @@ ssh ubuntu@{IP_ADDRESS_OF_RASPBERRY_PI}
 ```
 
 ![image](https://user-images.githubusercontent.com/92040822/204990674-f8be88a3-05ff-4e18-8970-826fece2ea90.png)
+
+Please use the proper keyword among burger, waffle, waffle_pi for the TURTLEBOT3_MODEL parameter.
+
+```
+export TURTLEBOT3_MODEL=burger
+ros2 launch turtlebot3_bringup robot.launch.py
+```
+
+![image](https://user-images.githubusercontent.com/92040822/204991887-22efbd01-4299-44f9-947c-8f9370a5f8ef.png)
+
+2. Open a new terminal from Remote PC with Ctrl + Alt + T and launch the SLAM node. The Cartographer is used as a default SLAM method.
+
+```
+export TURTLEBOT3_MODEL=burger
+ros2 launch turtlebot3_cartographer cartographer.launch.py
+```
+
+![image](https://user-images.githubusercontent.com/92040822/204992606-644e8085-a357-4920-8e31-44e9db2db3d2.png)
+
+![image](https://user-images.githubusercontent.com/92040822/204992721-f0bdb26f-a890-41b7-8bdb-9f7ff00b361c.png)
+
+## 2. Run Teleoperation Node
+
+Once SLAM node is successfully up and running, TurtleBot3 will be exploring unknown area of the map using teleoperation. It is important to avoid vigorous movements such as changing the linear and angular speed too quickly. When building a map using the TurtleBot3, it is a good practice to scan every corner of the map.
+
+1. Open a new terminal and run the teleoperation node from the Remote PC.
+Please use the proper keyword among burger, waffle, waffle_pi for the TURTLEBOT3_MODEL parameter.
+
+```
+export TURTLEBOT3_MODEL=burger
+ros2 run turtlebot3_teleop teleop_keyboard
+
+Control Your TurtleBot3!
+---------------------------
+Moving around:
+       w
+  a    s    d
+       x
+
+w/x : increase/decrease linear velocity
+a/d : increase/decrease angular velocity
+space key, s : force stop
+
+CTRL-C to quit
+```
+
+![image](https://user-images.githubusercontent.com/92040822/204993676-0954139b-86fa-45df-a9ff-67e960e6f4ad.png)
+
+## 3. Tuning Guide
+
+The SLAM in ROS2 uses Cartographer ROS which provides configuration options via Lua file.
+
+Below options are defined in turtlebot3_cartographer/config/turtlebot3_lds_2d.lua file. For more details about each options, please refer to the Cartographer ROS official documentation.
+
+1. MAP_BUILDER.use_trajectory_builder_2d
+This option sets the type of SLAM.
+
+2. TRAJECTORY_BUILDER_2D.min_range
+This option sets the minimum usable range of the lidar sensor.
+
+3. TRAJECTORY_BUILDER_2D.max_range
+This option sets the maximum usable range of the lidar sensor.
+
+4. TRAJECTORY_BUILDER_2D.missing_data_ray_length
+In 2D, Cartographer replaces ranges further than max_range with TRAJECTORY_BUILDER_2D.missing_data_ray_length.
+
+5. TRAJECTORY_BUILDER_2D.use_imu_data
+If you use 2D SLAM, range data can be handled in real-time without an additional source of information so you can choose whether you’d like Cartographer to use an IMU or not.
+
+6. TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching
+Local SLAM : The RealTimeCorrelativeScanMatcher can be toggled depending on the reliability of the sensor.
+
+7. TRAJECTORY_BUILDER_2D.motion_filter.max_angle_radians
+Local SLAM : To avoid inserting too many scans per submaps, A scan is dropped if the motion does not exceed a certain angle.
+
+8. POSE_GRAPH.optimize_every_n_nodes
+Global SLAM : Setting POSE_GRAPH.optimize_every_n_nodes to 0 is a handy way to disable global SLAM and concentrate on the behavior of local SLAM.
+
+9. POSE_GRAPH.constraint_builder.min_score
+Global SLAM : Threshold for the scan match score below which a match is not considered. Low scores indicate that the scan and map do not look similar.
+
+10. POSE_GRAPH.constraint_builder.global_localization_min_score
+Global SLAM : Threshold below which global localizations are not trusted.
+
+NOTE: Constraints can be visualized in RViz, it is very handy to tune global SLAM. One can also toggle POSE_GRAPH.constraint_builder.log_matches to get regular reports of the constraints builder formatted as histograms.
+
+## 4. Save Map
+
+The map is drawn based on the robot’s odometry, tf and scan information. These map data is drawn in the RViz window as the TurtleBot3 was traveling. After creating a complete map of desired area, save the map data to the local drive for the later use.
+
+1. Launch the map_saver_cli node in the nav2_map_server package to create map files.
+The map file is saved in the directory where the map_saver_cli node is launched at.
+Unless a specific file name is provided, map will be used as a default file name and create map.pgm and map.yaml.
+
+```
+ros2 run nav2_map_server map_saver_cli -f ~/map
+```
+
+![image](https://user-images.githubusercontent.com/92040822/204996481-2c06bb19-d6eb-4e63-815c-7c5452a81c7a.png)
+
+
+The -f option specifies a folder location and a file name where files to be saved.
+With the above command, map.pgm and map.yaml will be saved in the home folder ~/(/home/${username}).
+
+## 5. Map
+
+The map uses two-dimensional Occupancy Grid Map (OGM), which is commonly used in ROS. The saved map will look like the figure below, where white area is collision free area while black area is occupied and inaccessible area, and gray area represents the unknown area. This map is used for the Navigation.
 
 ## Presentation
 
