@@ -357,11 +357,39 @@ With the above command, map.pgm and map.yaml will be saved in the home folder ~/
 
 The map uses two-dimensional Occupancy Grid Map (OGM), which is commonly used in ROS. The saved map will look like the figure below, where white area is collision free area while black area is occupied and inaccessible area, and gray area represents the unknown area. This map is used for the Navigation.
 
+![image](https://user-images.githubusercontent.com/92040822/205026394-a447b491-0ef8-4e3d-b259-284cb8a09592.png)
+
+
 ## Presentation
 
 The proposal preparation was also the focus of our effort this week.
 
 # Week-13
+
+# Navigation
+
+## Run Navigation Nodes
+
+1. If the Bringup is not running on the TurtleBot3 SBC, launch the Bringup. Skip this step if you have launched bringup previously.
+Open a new terminal from Remote PC with Ctrl + Alt + T and connect to Raspberry Pi with its IP address. The default password is turtlebot.
+
+```
+ssh ubuntu@{IP_ADDRESS_OF_RASPBERRY_PI}
+export TURTLEBOT3_MODEL=${TB3_MODEL}
+ros2 launch turtlebot3_bringup robot.launch.py
+```
+
+![image](https://user-images.githubusercontent.com/92040822/204999396-2259acf3-aac3-487d-9a6a-6b4aafcbd01c.png)
+
+2. Open a new terminal from Remote PC with Ctrl + Alt + T and launch the Navigation node. ROS 2 uses Navigation2. Please use the proper keyword among burger, waffle, waffle_pi for the TURTLEBOT3_MODEL parameter.
+
+```
+export TURTLEBOT3_MODEL=burger
+ros2 launch turtlebot3_navigation2 navigation2.launch.py map:=$HOME/map.yaml
+```
+
+![image](https://user-images.githubusercontent.com/92040822/204998742-9a6abedf-4d5b-4b78-80d6-86984ec42927.png)
+
 
 
 
