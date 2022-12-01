@@ -17,7 +17,7 @@ Group C (Team Members)
 - Ubuntu 20.04
 - ROS Foxy
 
-# 1. Install ROS2 on Remote PC
+## 1. Install ROS2 on Remote PC
 
 Open the terminal and type the commands listed below one at a time.
 
@@ -34,7 +34,7 @@ bash ./install_ros2_foxy.sh
 ![image](https://user-images.githubusercontent.com/92040822/200147308-5d60e464-2113-4098-9ad6-5bf30fee222d.png)
 
 
-# 2. Install Dependent ROS2 Packages
+## 2. Install Dependent ROS2 Packages
 
 Open the terminal with Ctrl+Alt+T from Remote PC.
 
@@ -66,7 +66,7 @@ sudo apt install ros-foxy-nav2-bringup
 ![image](https://user-images.githubusercontent.com/92040822/200147561-108de0ab-5763-4191-8ec9-4f9913afdc7d.png)
 
 
-# 3 Install TurtleBot3 Packages
+## 3 Install TurtleBot3 Packages
 
 Build the TurtleBot3 packages with source code.
 
@@ -86,7 +86,7 @@ source ~/.bashrc
 
 ![image](https://user-images.githubusercontent.com/92040822/200147808-b976d8f7-2505-4337-92a3-e7a4c286b708.png)
 
-# 3. Environment Configuration
+## 4. Environment Configuration
 
 Set the ROS environment for PC
 
@@ -134,7 +134,7 @@ Click the Apply All Operations green check button at the top.
 
 ![image](https://github.com/sanjiblama28/San/blob/main/Veed%20Recording%20-%206%20November%202022%20(3).gif)
 
-# Configure the WiFi Network Setting
+## Configure the WiFi Network Setting
 
 Launch a terminal window, and navigate to the netplan directory on the microSD card and open the 50-cloud-init.yaml file and begin editing it with a superuser permission sudo.
 
@@ -165,7 +165,7 @@ ROS_DOMAIN_ID=30 #TURTLEBOT3
 
 Please follow the steps below on the TurtleBot3 SBC (Raspberry Pi).
 
-Install the LDS-02 driver and update the TurtleBot3 package.
+1. Install the LDS-02 driver and update the TurtleBot3 package.
 
 ```
 sudo apt update
@@ -181,17 +181,72 @@ cd ~/turtlebot3_ws && colcon build --symlink-install
 
 ![image](https://user-images.githubusercontent.com/92040822/204879981-fdcf8708-b207-4d3e-a49f-adec275807a8.png)
 
-
+![image](https://user-images.githubusercontent.com/92040822/204987063-623a27cb-3cb1-4345-b4c5-4e0a60985e3e.png)
 
 Now, 
-Export the LDS MODEL to the bashrc file. LDS-01 or LDS-02, depending on your LDS model.
+2. Export the LDS MODEL to the bashrc file. LDS-01 or LDS-02, depending on your LDS model.
 
 ```
 echo 'export LDS_MODEL=LDS-02' >> ~/.bashrc
 source ~/.bashrc
 ```
+![image](https://user-images.githubusercontent.com/92040822/204987255-ab70dec1-7135-4448-a9c7-7a7fd64bd49a.png)
+
+# OpenCR Setup
+
+1. Connect the OpenCR to the Rasbperry Pi using the micro USB cable.
+2. Install required packages on the Raspberry Pi to upload the OpenCR firmware.
+
+```
+sudo dpkg --add-architecture armhf
+sudo apt update
+sudo apt install libc6:armhf 
+```
+
+![image](https://user-images.githubusercontent.com/92040822/204988172-e33c0099-0d12-4723-a9ba-ecddeb6efbb6.png)
+
+3. Depending on the platform, use either burger or waffle for the OPENCR_MODEL name.
+
+```
+export OPENCR_PORT=/dev/ttyACM0
+export OPENCR_MODEL=burger
+rm -rf ./opencr_update.tar.bz2
+```
+
+![image](https://user-images.githubusercontent.com/92040822/204989231-5613bc9d-d103-4406-a464-6ec586d6ce74.png)
+
+4. Download the firmware and loader, then extract the file.
+
+```
+wget https://github.com/ROBOTIS-GIT/OpenCR-Binaries/raw/master/turtlebot3/ROS2/latest/opencr_update.tar.bz2
+tar -xvf ./opencr_update.tar.bz2
+```
+
+![image](https://user-images.githubusercontent.com/92040822/204989421-5b95e2be-012a-4d2d-a585-8e5998686761.png)
+
+5. Upload firmware to the OpenCR.
+
+```
+cd ~/opencr_update
+./update.sh $OPENCR_PORT $OPENCR_MODEL.opencr
+```
+
+![image](https://user-images.githubusercontent.com/92040822/204989511-07ced6dd-7abe-431b-8127-651a0c2ef6c3.png)
 
 # Week-10
+
+# SLAM
+
+## Run SLAM Node
+
+1. If the Bringup is not running on the TurtleBot3 SBC, launch the Bringup first. Skip this step if you have launched bringup previously.
+Open a new terminal from Remote PC with Ctrl + Alt + T and connect to Raspberry Pi with its IP address. The default password is turtlebot.
+
+```
+ssh ubuntu@{IP_ADDRESS_OF_RASPBERRY_PI}
+```
+
+![image](https://user-images.githubusercontent.com/92040822/204990674-f8be88a3-05ff-4e18-8970-826fece2ea90.png)
 
 ## Presentation
 
