@@ -97,6 +97,8 @@ source ~/.bashrc
 
 ![image](https://user-images.githubusercontent.com/92040822/200147852-c903d9f7-cc37-4418-9bc9-e3f6918dc929.png)
 
+# Week-10
+
 # SBC Setup using:
 - Pen drive
 - TurtleBot3 SBC Image (Raspberry Pi 4B (2GB or 4GB) ROS2 Foxy image)
@@ -233,7 +235,7 @@ cd ~/opencr_update
 
 ![image](https://user-images.githubusercontent.com/92040822/204989511-07ced6dd-7abe-431b-8127-651a0c2ef6c3.png)
 
-# Week-10
+# Week-(11-12)
 
 # SLAM
 
@@ -357,13 +359,10 @@ The map uses two-dimensional Occupancy Grid Map (OGM), which is commonly used in
 
 ## Presentation
 
-The proposal preparation was the focus of our effort this week.
+The proposal preparation was also the focus of our effort this week.
 
-# Week-11
+# Week-13
 
-## Updated Presentation
-
-https://github.com/sanjiblama28/Smart_Team/blob/main/SMART_MOBILITY_Final_Porposal_GroupC.pptx
 
 
 
