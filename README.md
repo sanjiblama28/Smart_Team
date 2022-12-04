@@ -455,28 +455,170 @@ ros2 launch turtlebot3_navigation2 navigation2.launch.py map:=$HOME/map.yaml
 
 ![image](https://user-images.githubusercontent.com/92040822/204998742-9a6abedf-4d5b-4b78-80d6-86984ec42927.png)
 
+## Estimate Initial Pose
+
+`Initial Pose Estimation` must be performed before running the Navigation as this process initializes the AMCL parameters that are critical in Navigation. Turtle3Bot has to be correctly located on the map with the LDS sensor data that neatly overlaps the displayed map. 
+
+1. We clicked the `2D Pose Estimate` button in the RViz2 menu.
+2. After that Click on the map where the actual robot is located and drag the large green arrow toward the direction where the robot is facing.
+3. The steps 1 and 2 are repeated until the LDS sensor data is overlayed on the saved map. 
+4. We launch keyboard teleoperation node to precisely locate the robot on the map. 
+5. The robot is moved back and forth a bit to collect the surrounding environment information and narrow down the estimated location of the TurtleBot3 on the map which is displayed with tiny green arrows. 
+6. The keyboard teleoperation node is terminated by entering `Ctrl` +`C` to the teleop node terminal in order to prevent different **cmd_vel** values are published from multiple nodes during navigation. 
+
+## Set Navigation Goal
+
+1. Click on the `Navigation2 Goal` button in the RViz2 menu.
+2. Click on the map to set the destination of the robot and drag the green arrow toward the direction where the robot will be facing. 
+ - This green arrow is a marker that can specify the destination of the robot.
+ - The root of the arrow is `x`, `y` coordinate of the destination, and the angle θ is determined by the orientation of the arrow.
+ - As soon as x, y, θ are set, TurtleBot3 will start moving to the destination immediately.
+ 
+## Tuning Guide
+
+1.1. Costmap Parameters
+
+1.1.1. inflation_layer.inflation_radius
+- Defined in `turtlebot3_navigation2/param/${TB3_MODEL}.yaml`
+- This parameter makes inflation area from the obstacle.
+- The route would be planned to avoid going through this location. Setting this to be greater than the robot radius is secure.
+
+1.1.2. inflation_layer.cost_scaling_factor
+- Defined in `turtlebot3_navigation2/param/${TB3_MODEL}.yaml`
+- The value of the costmap is multiplied by this inverse proportional factor. The value of the costmap decreases when this parameter is raised.
+
+The optimal path for the robot to pass through obstacles is to take a median path between them. Setting a smaller value for this parameter will create a farther path from the obstacles.
+
+1.2. dwb_controller
+
+1.2.1. max_vel_x
+--> Defined in `turtlebot3_navigation2/param/${TB3_MODEL}.yaml`
+--> This factor is set the maximum value of translational velocity.
+
+1.2.2. min_vel_x
+--> Defined in turtlebot3_navigation2/param/${TB3_MODEL}.yaml
+--> This factor is set the minimum value of translational velocity. If set this negative, the robot can move backwards.
+
+1.2.3. max_vel_y
+--> Defined in turtlebot3_navigation2/param/${TB3_MODEL}.yaml
+--> The maximum y velocity for the robot in m/s.
+
+1.2.4. min_vel_y
+--> Defined in turtlebot3_navigation2/param/${TB3_MODEL}.yaml
+--> The minimum y velocity for the robot in m/s.
+
+1.2.5. max_vel_theta
+--> Defined in turtlebot3_navigation2/param/${TB3_MODEL}.yaml
+--> Actual value of the maximum rotational velocity. The robot can not be faster than this.
+
+1.2.6. min_speed_theta
+--> Defined in turtlebot3_navigation2/param/${TB3_MODEL}.yaml
+--> Actual value of the minimum rotational speed. The robot can not be slower than this.
+
+1.2.7. max_speed_xy
+--> Defined in `turtlebot3_navigation2/param/${TB3_MODEL}.yaml`
+--> The absolute value of the maximum translational velocity for the robot in m/s.
+
+1.2.8. min_speed_xy
+--> Defined in `turtlebot3_navigation2/param/${TB3_MODEL}.yaml`
+--> The absolute value of the minimum translational velocity for the robot in m/s.
+
+1.2.9. acc_lim_x
+--> Defined in `turtlebot3_navigation2/param/${TB3_MODEL}.yaml`
+--> The x acceleration limit of the robot in meters/sec^2.
+
+1.2.10. acc_lim_y
+--> Defined in `turtlebot3_navigation2/param/${TB3_MODEL}.yaml`
+--> The y acceleration limit of the robot in meters/sec^2.
+
+1.2.11. acc_lim_theta
+--> Defined in `turtlebot3_navigation2/param/${TB3_MODEL}.yaml`
+--> The rotational acceleration limit of the robot in radians/sec^2.
+
+1.2.12. decel_lim_x
+--> Defined in `turtlebot3_navigation2/param/${TB3_MODEL}.yaml`
+--> The deceleration limit of the robot in the x direction in m/s^2.
+
+1.2.13. decel_lim_y
+--> Defined in `turtlebot3_navigation2/param/${TB3_MODEL}.yaml`
+--> The deceleration limit of the robot in the y direction in m/s^2.
+
+1.2.14. decel_lim_theta
+--> Defined in `turtlebot3_navigation2/param/${TB3_MODEL}.yaml`
+--> The deceleration limit of the robot in the theta direction in rad/s^2.
+
+1.2.15. xy_goal_tolerance
+--> Defined in `turtlebot3_navigation2/param/${TB3_MODEL}.yaml`
+--> The x,y distance allowed when the robot reaches its goal pose.
+
+1.2.16. yaw_goal_tolerance
+--> Defined in `turtlebot3_navigation2/param/${TB3_MODEL}.yaml`
+--> The yaw angle allowed when the robot reaches its goal pose.
+
+1.2.17. transform_tolerance
+--> Defined in `turtlebot3_navigation2/param/${TB3_MODEL}.yaml`
+--> It allows the latency for tf messages.
+
+1.2.18. sim_time
+--> Defined in `turtlebot3_navigation2/param/${TB3_MODEL}.yaml`
+--> This factor is set forward simulation in seconds. Setting this too small makes robot difficult to pass a narrow space while large value limits dynamic turns. You can observe the defferences of length of the yellow line in below image that represents the simulation path.
 
 
+# Simulation
+
+- We run the Simulation on Remote PC
+- Launching the Simulation for the first time on the Remote PC may take a while to setup the environment
+
+1. Gazebo Simulation
+
+The Gazebo Simulation uses **ROS Gazebo package**, therefore proper Gazebo version for ROS2 Foxy has to be installed before running this instruction.
+
+1.1. Install Simulation Package
+The TurtleBot3 Simulation Package requires turtlebot3 and turtlebot3_msgs packages as prerequisite. Without these prerequisite packages, the Simulation cannot be launched.
+
+```
+cd ~/turtlebot3_ws/src/
+git clone -b foxy-devel https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+cd ~/turtlebot3_ws && colcon build --symlink-install
+
+```
+
+1.2. Launch Simulation World
+
+Three simulation environments are prepared for TurtleBot3. One of these environments are selected to launch Gazebo. For our TurtleBot 3 burger, its a Empty World.
+
+`If we are to launch a new world, it is important to completely terminate other Simulation`.
 
 
+a. Empty World
 
+```
+export TURTLEBOT3_MODEL=burger
+ros2 launch turtlebot3_gazebo empty_world.launch.py
+```
+b. TurtleBot3 World
+For TurtleBot3 Waffle!!
 
+```
+export TURTLEBOT3_MODEL=waffle
+ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+```
+c. TurtleBot3 House
 
+For TurtleBot3 Waffle_pi
 
+```
+export TURTLEBOT3_MODEL=waffle_pi
+ros2 launch turtlebot3_gazebo turtlebot3_house.launch.py
+```
 
+1.3. Operate TurtleBot3
 
+In order to teleoperate the TurtleBot3 with the keyboard, launch the teleoperation node with below command in a new terminal window.
 
-
-
-
-
-
-
-
-
-
-
-
+```
+ros2 run turtlebot3_teleop teleop_keyboard
+```
 
 
 
