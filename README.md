@@ -298,6 +298,11 @@ We can find the proper core example from `Examples` > `turtlebot3` > `turtlebot3
 
 # Error while Configuring & Testing DYNAMIXELs
 
+![image](https://user-images.githubusercontent.com/92040822/205493506-472bd293-eb65-4d4f-995e-9a73227340a4.png)
+![image](https://github.com/sanjiblama28/San/blob/main/t1.PNG)
+![image](https://github.com/sanjiblama28/San/blob/main/ture.PNG)
+![image](https://github.com/sanjiblama28/San/blob/main/turt1.PNG)
+
 # Week-(11-12)
 
 # SLAM
