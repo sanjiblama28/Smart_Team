@@ -597,18 +597,14 @@ export TURTLEBOT3_MODEL=burger
 ros2 launch turtlebot3_gazebo empty_world.launch.py
 ```
 b. TurtleBot3 World
-For TurtleBot3 Waffle!!
 
 ```
-export TURTLEBOT3_MODEL=waffle
+export TURTLEBOT3_MODEL=burger
 ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
 ```
 c. TurtleBot3 House
-
-For TurtleBot3 Waffle_pi
-
 ```
-export TURTLEBOT3_MODEL=waffle_pi
+export TURTLEBOT3_MODEL=burger
 ros2 launch turtlebot3_gazebo turtlebot3_house.launch.py
 ```
 
@@ -620,9 +616,344 @@ In order to teleoperate the TurtleBot3 with the keyboard, launch the teleoperati
 ros2 run turtlebot3_teleop teleop_keyboard
 ```
 
+2. SLAM Simulation
+
+We can choose or develop different surroundings and robot models in the virtual world while using the Gazebo simulator for SLAM. SLAM Simulation is very similar to SLAM using the actual TurtleBot3 aside from setting up the simulation environment rather than turning on the robot.
+
+2.1. Launch Simulation World
+
+In order to create a map with SLAM, it is recommended to use either `TurtleBot3 World` or `TurtleBot3 House`. 
+Also its important to use proper Keyword , for our case `TURTLEBOT3_MODEL = burger`
+
+```
+export TURTLEBOT3_MODEL=burger
+$ ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+```
+
+2.2. Run SLAM Node
+
+We run the SLAM node in the new Terminal in Remote PC. `Ctrl` + `Alt` + `T`
+Cartographer SLAM method is used by default. 
+
+```
+export TURTLEBOT3_MODEL=burger
+ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=True
+```
+
+2.3. Run Teleportation Node
+
+We opened the new terminal and run the teleportation node from the Remote PC
+
+```
+export TURTLEBOT3_MODEL=burger
+ros2 run turtlebot3_teleop teleop_keyboard
+```
+
+2.4. Save Map
+
+When the map is created successfully, open a new terminal from Remote PC with `Ctrl + Alt + T` and save the map.
+
+```
+ros2 run nav2_map_server map_saver_cli -f ~/map
+```
+
+# Autonomous Driving 
+
+The TurtleBot3 Autorace is supported in ROS1 Kinetic and Noetic Only.
+
+Prequisites
+- TurtleBot3 Burger
+- Remote PC
+- Raspberry Pi Camera Module
+- Autorace Tracks and Objects
+
+## Installing Autorace Packages
+
+1. Install the AutoRace 202 meta package on Remote PC
+
+```
+cd ~/catkin_ws/src/
+git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_autorace_2020.git
+cd ~/catkin_ws && catkin_make
+```
+
+2. Install additional dependent packages on `Remote PC`
+
+```
+sudo apt install ros-noetic-image-transport ros-noetic-cv-bridge ros-noetic-vision-opencv python3-opencv libopencv-dev ros-noetic-image-proc
+```
+
+1. Camera Calibration
+
+1.1. Launching roscore on Remote PC
+
+```
+roscore
+```
+
+1.2. Trigger the camera on SBC
+
+```
+roslaunch turtlebot3_autorace_camera raspberry_pi_camera_publish.launch
+```
+
+1.3. Execute rqt_image_view on Remote PC
+
+```
+rqt_image_view
+```
+
+## Intrinsic Camera Calibration
+
+1. Launch roscore on `Remote PC`
+```
+roscore
+```
+
+2. Trigerring the camera on `SBC`
+
+```
+$ roslaunch turtlebot3_autorace_camera raspberry_pi_camera_publish.launch
+```
+
+3. Run a intrinsic camera calibration launch file on `Remote PC.`
+```
+roslaunch turtlebot3_autorace_camera intrinsic_camera_calibration.launch mode:=calibration
+```
+
+4. Use the checkerboard to calibrate the camera, and click CALIBRATE.
+5. Click Save to save the intrinsic calibration data.
+6. **calibrationdata.tar.gz** folder will be created at /tmp folder.
+7. Extract **calibrationdata.tar.gz** folder, and open **ost.yaml.**
+8. Copy and paste the data from **ost.yaml** to **camerav2_320x240_30fps.yaml.**
 
 
+## Extrinsic Camera Calibration
+
+1. Open a new terminal on Remote PC and launch Gazebo.
+
+```
+roslaunch turtlebot3_gazebo turtlebot3_autorace_2020.launch
+```
+2. Open a new terminal and launch the intrinsic camera calibration node.
+
+```
+roslaunch turtlebot3_autorace_camera intrinsic_camera_calibration.launch
+```
+
+3. Open a new terminal and launch the extrinsic camera calibration node.
+
+```
+roslaunch turtlebot3_autorace_camera extrinsic_camera_calibration.launch mode:=calibration
+```
+
+4. Execute rqt on Remote PC.
+
+```
+rqt
+```
+
+5. Select plugins > visualization > Image view. Create two image view windows.
+
+6. Select `/camera/image_extrinsic_calib/compressed topic on one window and /camera/image_projected_compensated` on the other.
+
+![image](https://user-images.githubusercontent.com/92040822/205491649-9c81fd1a-3aea-4059-ac19-bbfa952ea685.png)
+
+The first topic shows an image with a red trapezoidal shape and the latter shows the ground projected view (Bird’s eye view).
+
+7. Excute rqt_reconfigure on `Remote PC.`
+
+```
+rosrun rqt_reconfigure rqt_reconfigure
+```
+
+8. Adjust parameters in `/camera/image_projection` and `/camera/image_compensation_projection.`
+
+Change `/camera/image_projection` parameter value. It affects `/camera/image_extrinsic_calib/compressed topic.`
+
+Intrinsic camera calibration modifies the perspective of the image in the red trapezoid.
+
+![image](https://user-images.githubusercontent.com/92040822/205491727-4a6baed0-fe9a-4f15-bd7b-2983554e9fae.png)
+
+9. After that, overwrite each values on to the yaml files in `turtlebot3_autorace_camera/calibration/extrinsic_calibration/.` This will save the current calibration parameters so that they can be loaded later.
+
+![image](https://user-images.githubusercontent.com/92040822/205491769-bda2cc03-7c98-460f-b576-2e36de4ec0cd.png)
+
+![image](https://user-images.githubusercontent.com/92040822/205491776-223b8641-bee0-41e5-a8d8-84e46f324456.png)
 
 
+## Check Calibration Result
+
+1. Close all the terminal
+2. Open a new terminal and launch Autorace Gazebo simulation. The `roscore` will be automatically launched with the roslaunch command.
+```
+roslaunch turtlebot3_gazebo turtlebot3_autorace_2020.launch
+```
+
+3. Open a new terminal and launch the intrinsic calibration node.
+
+```
+roslaunch turtlebot3_autorace_camera intrinsic_camera_calibration.launch
+```
+
+4. Open a new terminal and launch the extrinsic calibration node.
+
+```
+roslaunch turtlebot3_autorace_camera extrinsic_camera_calibration.launch
+```
+
+5. Open a new terminal and launch the rqt image viewer.
+
+```
+rqt_image_view
+```
+
+6.With successful calibration settings, the bird eye view image should appear as below when the `/camera/image_projected_compensated` topic is selected. 
+
+
+2. Lane Detection
+Lane detection package that runs on the Remote PC receives camera images either from TurtleBot3 or Gazebo simulation to detect driving lanes and to drive the Turtlebot3 along them.
+
+2.1. Place the TurtleBot3 inbetween yellow and white lanes.
+
+`NOTE: The lane detection filters yellow on the left side while filters white on the right side. Be sure that the yellow lane is on the left side of the robot.`
+
+2.2. Open a new terminal and launch Autorace Gazebo simulation. The `roscore` will be automatically launched with the roslaunch command.
+
+```
+roslaunch turtlebot3_gazebo turtlebot3_autorace_2020.launch
+```
+
+2.3. Open a new terminal and launch the intrinsic calibration node.
+
+```
+roslaunch turtlebot3_autorace_camera intrinsic_camera_calibration.launch
+```
+
+2.4. Open a new terminal and launch the extrinsic calibration node.
+
+```
+roslaunch turtlebot3_autorace_camera extrinsic_camera_calibration.launch
+```
+
+2.5. Open a new terminal and launch the lane detection calibration node.
+
+```
+roslaunch turtlebot3_autorace_detect detect_lane.launch mode:=calibration
+```
+
+2.6. Open a new terminal and launch the rqt.
+
+```
+rqt
+```
+
+2.7. 
+Launch the rqt image viewer by selecting `Plugins > Cisualization > Image view.`
+Multiple rqt plugins can be run.
+
+2.8. Display three topics at each image viewer
+
+`/detect/image_lane/compressed`
+![image](https://user-images.githubusercontent.com/92040822/205492474-85620ff5-dca4-42f3-ba6f-8e8fcbaa6cc3.png)
+
+`/detect/image_yellow_lane_marker/compressed `: a yellow range color filtered image.
+
+![image](https://user-images.githubusercontent.com/92040822/205492493-1edcb64c-ad98-4495-9630-6df6fbbeb289.png)
+
+![image](https://user-images.githubusercontent.com/92040822/205492503-231dfd35-d6d9-44e5-9ce4-a404d1e22b22.png)
+
+2.9. Open a new terminal and execute rqt_reconfigure.
+
+```
+rosrun rqt_reconfigure rqt_reconfigure
+```
+
+2.10 Click detect_lane then adjust parameters so that yellow and white colors can be filtered properly.
+
+![image](https://user-images.githubusercontent.com/92040822/205492566-ace03826-49cf-4052-bb14-08bfe662e875.png)
+
+2.11. Open lane.yaml file located in turtlebot3_autorace_detect/param/lane/. You need to write modified values to the file. This will make the camera set its parameters as you set here from next launching.
+
+![image](https://user-images.githubusercontent.com/92040822/205492608-a5eb8269-26c6-42c7-966c-123230cb9453.png)
+
+
+2.12 Close the terminal or terminate with Ctrl + C on rqt_reconfigure and detect_lane terminals.
+
+2.13. Open a new terminal and launch the lane detect node without the calibration option.
+
+```
+roslaunch turtlebot3_autorace_detect detect_lane.launch
+```
+
+2.14. Open a new terminal and launch the node below to start the lane following operation.
+
+```
+roslaunch turtlebot3_autorace_driving turtlebot3_autorace_control_lane.launch
+```
+
+
+3. Traffic Sign Detection
+
+TurtleBot3 can detect various signs with the SIFT algorithm which compares the source image and the camera image, and perform programmed tasks while it drives.
+
+3.1. Open a new terminal and launch Autorace Gazebo simulation. The roscore will be automatically launched with the roslaunch command.
+
+```
+roslaunch turtlebot3_gazebo turtlebot3_autorace_2020.launch
+```
+
+3.2. Open a new terminal and launch the teleoperation node. Drive the TurtleBot3 along the lane and stop where traffic signes can be clearly seen by the camera.
+
+```
+roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+```
+
+3.3. Open a new terminal and launch the rqt_image_view.
+
+```
+rqt_image_view
+```
+
+3.4. Select the `/camera/image_compensated` topic to display the camera image.
+
+3.5. Capture each traffic sign from the `rqt_image_view` and crop unnecessary part of image. For the best performance, it is recommended to use original traffic sign images used in the track.
+
+3.6. Save the images in the turtlebot3_autorace_detect package `/turtlebot3_autorace_2020/turtlebot3_autorace_detect/image/.` The file name should match with the name used in the source code.
+
+3.7. Open a new terminal and launch the intrinsic calibration node.
+
+```
+roslaunch turtlebot3_autorace_camera intrinsic_camera_calibration.launch
+```
+
+3.8. Open a new terminal and launch the extrinsic calibration node.
+
+```
+roslaunch turtlebot3_autorace_camera extrinsic_camera_calibration.launch
+```
+
+3.9. Open a new terminal and launch the traffic sign detection node.
+A specific mission for the mission argument must be selected among below.
+
+```
+roslaunch turtlebot3_autorace_detect detect_sign.launch mission:=SELECT_MISSION
+```
+
+3.10. Open a new terminal and launch the rqt image view plugin.
+
+```
+rqt_image_view
+```
+
+3.11. Select `/detect/image_traffic_sign/compressed` topic from the drop down list. A screen will display the result of traffic sign detection.
+
+![image](https://user-images.githubusercontent.com/92040822/205493148-ee36044e-310e-418f-b586-7554f8ee12b1.png)
+
+![image](https://user-images.githubusercontent.com/92040822/205493152-93001155-1afa-43dc-b1e5-54de4e27af2a.png)
+
+![image](https://user-images.githubusercontent.com/92040822/205493155-0656f4b3-3fa4-485b-a1b7-2c700a89b53c.png)
+
+![image](https://user-images.githubusercontent.com/92040822/205493161-07f80d61-31d6-4f9f-9033-d121e162b110.png)
 
 
