@@ -1,4 +1,4 @@
-# Weekly Activities (after midterm)
+# Weekly Activities (after midterm) // Foxy Version
 
 ```
 Group C (Team Members)
@@ -235,9 +235,74 @@ cd ~/opencr_update
 
 ![image](https://user-images.githubusercontent.com/92040822/204989511-07ced6dd-7abe-431b-8127-651a0c2ef6c3.png)
 
+
+5. OpenCR Test
+
+We perform the OpenCR Test by following the below steps:
+--> PUSH SW1 / PUSH SW2 were used to check if the robot has been properly assembeled or not and this process tests the left and right DYNAMIXEL's and the OpenCR board.
+--> After assembling TurtleBot3, we connected the power to OpenCR and turn on the power switch of OpenCR. The red `power LED` will be turned on. 
+--> And then the robot was placed in a flat ground in an open area.
+--> After that, `PUSH SW 1` button was pushed for a few seconds to move the robot forward around 30 centimeters as recommended. 
+--> And `PUSH SW 2` for a few seconds to command the robot to rotate 180 degrees in place. 
+
+# Observation after Testing OpenCR
+
+1. The robot has been succefully assembled.
+2. The power connection to OpenCR is successful.
+3. During the movement test, the wheels do not move, referring we were having problem with `DYNAMIXELs` so the next step would be setting up `DYNAMIXELs for TurtleBot3`.
+
+# Setup DYNAMIXELs for TurtleBot3
+
+To do this step, Firstly, we disconnected one of the DYNAMIXEL from our assembled TurtleBot3, as its important to connect `ONLY ONE DYNAMIXEL` with the OpenCR.
+
+Following steps were performed to setup:
+
+1. Turn on the power of the OpenCR and connection of the board with the PC via a USB cable.
+2. Press and hold the `SW2` button and click on the `reset`button.  Once the `status` LED starts blinking, we release the `SW2` button.
+3. Uploading Setup Firmware to OpenCR
+- In the openCR board, we find `Examples` > `turtlebot3` > `turtlebot3_setup` > `turtlebot3_setup_motor` 
+
+The image for that section is shown below. 
+
+4. Clicking and Uploading button on the Arduino IDE
+ Once the example upload to the OpenCR is completed, we connect ONE DYNAMIXEL to the OpenCR and clicked the `Serial Monitor` icon in the upper right corner.
+ 
+ 5. Reset OpenCR
+ We press the `RESET` button if the example does not run properly.
+ 
+ 6. Selecting an Option
+ When the `Serial Monitor` is running, menu for DYNAMIXEL setup will be displayed. TurtleBot3 consists of two DYNAMIXEL's actuators for the left and right wheels, so we select the proper option based on the assembled position. 
+ 
+ For example, to set up the left side DYNAMIXEL, we enter `1` and to setup the right side DYNAMIXEL , we enter `2`.
+ 
+ 7. Confirmation
+ 
+ To prevent any mistake, a confirmation will be required and to proceed the configuration, we enter `Y` to the input textbox. 
+ 
+ 
+ 8. Configure DYNAMIXEL
+ 
+ The setup tool starts searching the connected DYNAMIXEL using different IDS and Baudrates. If DYNAMIXEL is detected, it will automatically set up for TurtleBot3.
+When the setup is completed, `OK` message is printed on the screen.
+
+9. Test DYNAMIXEL
+
+Once the setup procedure and verify if the change has been made properly. We select one of the test options, and the selected DYNAMIXEL will iterate rotation and stop every 1 second to the counter-clockwise or clockwise depending on the selected wheel.
+In order to end the test, we press `enter`.
+To test the left DYNAMIXEL, we enter `3` and enter `4` for the right DYNAMIXEL test.
+
+10. Upload TurtleBot3 Core
+
+Once DYNAMIXEL setup is completed, TurtleBot3 Core example should be uploaded to OpenCR.
+We can find the proper core example from `Examples` > `turtlebot3` > `turtlebot3_burger` and upload the example to openCR.
+
+# Error while Configuring & Testing DYNAMIXELs
+
 # Week-(11-12)
 
 # SLAM
+
+Its important to run the SLAM on `Remote PC` 
 
 ## 1. Run SLAM Node
 
