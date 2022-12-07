@@ -961,5 +961,88 @@ rqt_image_view
 
 ![image](https://user-images.githubusercontent.com/92040822/205493161-07f80d61-31d6-4f9f-9033-d121e162b110.png)
 
+## Launching a Turtlebot3 simulation
+
+Now that our workspace is compiled, let’s source it with:
+
+```
+source ~/turtlebot3_ws/install/setup.bash
+```
+and start a simulation. For that, let’s use the following commands:
+
+```
+export TURTLEBOT3_MODEL=burger
+```
+
+```
+ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+```
+Now that the simulation was launched, we could open Gazebo by clicking the Gazebo button as we can see in the image below:
+
 ![image](https://user-images.githubusercontent.com/92040822/206268599-96d762a4-32ce-42d9-8e6e-27c58348b19f.png)
+
+![image](https://user-images.githubusercontent.com/92040822/206269845-e8912a99-b3a5-4d8c-9f0c-ac22b9097752.png)
+
+## Launching the teleop keyboard
+
+Now that the simulation is up and running, let’s run the teleop keyboard in oder to easily move the robot around.
+
+For that, let’s open another web shell. After that, let’s source our environment:
+
+```
+cd ~/turtlebot3_ws
+source install/setup.bash
+export TURTLEBOT3_MODEL=burger
+ros2 run turtlebot3_teleop teleop_keyboard
+```
+
+You should now be able to move the robot around by pressing the keys as instructed in your web shell, using the keys w, a, s, d, and x.
+
+Moving around:
+  w
+a s d
+  x
+Launching the Object Detector
+
+![image](https://user-images.githubusercontent.com/92040822/206270750-dcbee500-59cf-4fde-839e-384d209fdf20.png)
+
+Awesome. Now we have our simulation running, the keyboard teleoperator running, it is now time to run our Object Detector.
+
+For that, let’s open a new terminal (the third one). After having it open, let’s source our workspace again:
+
+```
+cd ~/turtlebot3_ws
+source install/setup.bash
+export TURTLEBOT3_MODEL=burger
+ros2 run turtlebot3_example turtlebot3_obstacle_detection
+```
+
+The obstacle detection should now be working properly. It should output something similar to the following:
+
+```
+[INFO] [1638920304.914586963] [turtlebot3_obstacle_detection]: Turtlebot3 obstacle detection node has been initialised.
+```
+
+![image](https://user-images.githubusercontent.com/92040822/206273026-5be1f9c0-097b-4034-bbf5-a33cf8716192.png)
+
+Since it may be subscribed to the /cmd_vel_raw topic, let’s kill the keyboard teleop launched in the second terminal, and run it again as follows (using the /cmd_vel_raw topic):
+
+```
+export TURTLEBOT3_MODEL=burger
+ros2 run turtlebot3_teleop teleop_keyboard /cmd_vel:=/cmd_vel_raw
+```
+
+![image](https://user-images.githubusercontent.com/92040822/206273212-bec09424-bfd2-4973-8093-83dd0ae7d13a.png)
+
+If you now move next to the wall, the terminal where the Obstacle Detector node was launched, you should see some messages saying that an obstacle was detected. Something similar to:
+
+```
+[INFO] [1638920462.116441990] [turtlebot3_obstacle_detection]: Obstacles are detected nearby. Robot stopped.
+[INFO] [1638920462.126177608] [turtlebot3_obstacle_detection]: Obstacles are detected nearby. Robot stopped.
+[INFO] [1638920462.136174240] [turtlebot3_obstacle_detection]: Obstacles are detected nearby. Robot stopped.
+[INFO] [1638920462.146231079] [turtlebot3_obstacle_detection]: Obstacles are detected nearby. Robot stopped.
+[INFO] [1638920462.160709358] [turtlebot3_obstacle_detection]: Obstacles are detected nearby. Robot stopped.
+```
+
+
 
