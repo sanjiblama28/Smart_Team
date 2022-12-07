@@ -1025,6 +1025,8 @@ The obstacle detection should now be working properly. It should output somethin
 
 ![image](https://user-images.githubusercontent.com/92040822/206273026-5be1f9c0-097b-4034-bbf5-a33cf8716192.png)
 
+![image](https://github.com/sanjiblama28/San/blob/main/ezgif.com-gif-maker%20(4).gif)
+
 Since it may be subscribed to the /cmd_vel_raw topic, let’s kill the keyboard teleop launched in the second terminal, and run it again as follows (using the /cmd_vel_raw topic):
 
 ```
@@ -1043,6 +1045,6 @@ If you now move next to the wall, the terminal where the Obstacle Detector node 
 [INFO] [1638920462.146231079] [turtlebot3_obstacle_detection]: Obstacles are detected nearby. Robot stopped.
 [INFO] [1638920462.160709358] [turtlebot3_obstacle_detection]: Obstacles are detected nearby. Robot stopped.
 ```
-
+![image](https://github.com/sanjiblama28/San/blob/main/ezgif.com-gif-maker%20(5).gif)
 
 
