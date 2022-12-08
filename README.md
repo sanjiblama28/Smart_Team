@@ -688,7 +688,7 @@ cd ~/catkin_ws && catkin_make
 sudo apt install ros-noetic-image-transport ros-noetic-cv-bridge ros-noetic-vision-opencv python3-opencv libopencv-dev ros-noetic-image-proc
 ```
 
-1. Camera Calibration
+## 1. Camera Calibration
 
 1.1. Launching roscore on Remote PC
 
@@ -816,7 +816,7 @@ rqt_image_view
 6.With successful calibration settings, the bird eye view image should appear as below when the `/camera/image_projected_compensated` topic is selected. 
 
 
-2. Lane Detection
+## 2. Lane Detection
 Lane detection package that runs on the Remote PC receives camera images either from TurtleBot3 or Gazebo simulation to detect driving lanes and to drive the Turtlebot3 along them.
 
 2.1. Place the TurtleBot3 inbetween yellow and white lanes.
@@ -898,7 +898,7 @@ roslaunch turtlebot3_autorace_driving turtlebot3_autorace_control_lane.launch
 ```
 
 
-3. Traffic Sign Detection
+## 3. Traffic Sign Detection
 
 TurtleBot3 can detect various signs with the SIFT algorithm which compares the source image and the camera image, and perform programmed tasks while it drives.
 
@@ -908,11 +908,14 @@ TurtleBot3 can detect various signs with the SIFT algorithm which compares the s
 roslaunch turtlebot3_gazebo turtlebot3_autorace_2020.launch
 ```
 
+![image](https://user-images.githubusercontent.com/92040822/206453280-a828c78b-04c7-45b7-b822-b3396cd20c1c.png)
+
 3.2. Open a new terminal and launch the teleoperation node. Drive the TurtleBot3 along the lane and stop where traffic signes can be clearly seen by the camera.
 
 ```
 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
+![image](https://user-images.githubusercontent.com/92040822/206453563-507ebc82-441c-4f7b-b9d6-8122ddfb2cfa.png)
 
 3.3. Open a new terminal and launch the rqt_image_view.
 
@@ -922,21 +925,28 @@ rqt_image_view
 
 3.4. Select the `/camera/image_compensated` topic to display the camera image.
 
+![image](https://user-images.githubusercontent.com/92040822/206453770-cf462276-7fff-4c96-945e-14455917b8fe.png)
+
 3.5. Capture each traffic sign from the `rqt_image_view` and crop unnecessary part of image. For the best performance, it is recommended to use original traffic sign images used in the track.
 
 3.6. Save the images in the turtlebot3_autorace_detect package `/turtlebot3_autorace_2020/turtlebot3_autorace_detect/image/.` The file name should match with the name used in the source code.
+
+![image](https://user-images.githubusercontent.com/92040822/206453900-8e2dcc8e-7c8b-4a66-8ed4-33d4ae19edc4.png)
 
 3.7. Open a new terminal and launch the intrinsic calibration node.
 
 ```
 roslaunch turtlebot3_autorace_camera intrinsic_camera_calibration.launch
 ```
+![image](https://user-images.githubusercontent.com/92040822/206454136-8a8cb55e-61ce-41d8-b1b6-793d2ec578f0.png)
 
 3.8. Open a new terminal and launch the extrinsic calibration node.
 
 ```
 roslaunch turtlebot3_autorace_camera extrinsic_camera_calibration.launch
 ```
+
+![image](https://user-images.githubusercontent.com/92040822/206454297-c05a950e-768b-431b-a6e3-8dd5217949b2.png)
 
 3.9. Open a new terminal and launch the traffic sign detection node.
 A specific mission for the mission argument must be selected among below.
