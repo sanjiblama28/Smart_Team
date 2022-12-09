@@ -1,0 +1,53 @@
+[0.017s] Invoking command in '/home/sanjib28/turtlebot3_ws/build/turtlebot3_bringup': AMENT_PREFIX_PATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_node:/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs:/home/sanjib28/turtlebot3_ws/install/turtlebot3_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_node:/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs:/home/sanjib28/turtlebot3_ws/install/turtlebot3_description:/opt/ros/foxy LD_LIBRARY_PATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake /home/sanjib28/turtlebot3_ws/src/turtlebot3/turtlebot3_bringup -DCMAKE_INSTALL_PREFIX=/home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup
+[0.091s] -- The C compiler identification is GNU 9.4.0
+[0.149s] -- The CXX compiler identification is GNU 9.4.0
+[0.154s] -- Check for working C compiler: /usr/bin/cc
+[0.232s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.233s] -- Detecting C compiler ABI info
+[0.309s] -- Detecting C compiler ABI info - done
+[0.320s] -- Detecting C compile features
+[0.320s] -- Detecting C compile features - done
+[0.325s] -- Check for working CXX compiler: /usr/bin/c++
+[0.434s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.436s] -- Detecting CXX compiler ABI info
+[0.553s] -- Detecting CXX compiler ABI info - done
+[0.572s] -- Detecting CXX compile features
+[0.572s] -- Detecting CXX compile features - done
+[0.575s] -- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.606s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.607s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.920s] -- Configuring done
+[0.922s] -- Generating done
+[0.924s] -- Build files have been written to: /home/sanjib28/turtlebot3_ws/build/turtlebot3_bringup
+[0.931s] Invoked command in '/home/sanjib28/turtlebot3_ws/build/turtlebot3_bringup' returned '0': AMENT_PREFIX_PATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_node:/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs:/home/sanjib28/turtlebot3_ws/install/turtlebot3_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_node:/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs:/home/sanjib28/turtlebot3_ws/install/turtlebot3_description:/opt/ros/foxy LD_LIBRARY_PATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake /home/sanjib28/turtlebot3_ws/src/turtlebot3/turtlebot3_bringup -DCMAKE_INSTALL_PREFIX=/home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup
+[0.931s] Invoking command in '/home/sanjib28/turtlebot3_ws/build/turtlebot3_bringup': AMENT_PREFIX_PATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_node:/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs:/home/sanjib28/turtlebot3_ws/install/turtlebot3_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_node:/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs:/home/sanjib28/turtlebot3_ws/install/turtlebot3_description:/opt/ros/foxy LD_LIBRARY_PATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/sanjib28/turtlebot3_ws/build/turtlebot3_bringup -- -j2 -l2
+[0.977s] Invoked command in '/home/sanjib28/turtlebot3_ws/build/turtlebot3_bringup' returned '0': AMENT_PREFIX_PATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_node:/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs:/home/sanjib28/turtlebot3_ws/install/turtlebot3_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_node:/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs:/home/sanjib28/turtlebot3_ws/install/turtlebot3_description:/opt/ros/foxy LD_LIBRARY_PATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/sanjib28/turtlebot3_ws/build/turtlebot3_bringup -- -j2 -l2
+[1.003s] Invoking command in '/home/sanjib28/turtlebot3_ws/build/turtlebot3_bringup': AMENT_PREFIX_PATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_node:/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs:/home/sanjib28/turtlebot3_ws/install/turtlebot3_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_node:/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs:/home/sanjib28/turtlebot3_ws/install/turtlebot3_description:/opt/ros/foxy LD_LIBRARY_PATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --install /home/sanjib28/turtlebot3_ws/build/turtlebot3_bringup
+[1.011s] -- Install configuration: ""
+[1.012s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/launch
+[1.012s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/launch/rviz2.launch.py
+[1.012s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/launch/turtlebot3_state_publisher.launch.py
+[1.013s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/launch/robot.launch.py
+[1.013s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/param
+[1.013s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/param/waffle.yaml
+[1.013s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/param/burger.yaml
+[1.014s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/param/waffle_pi.yaml
+[1.014s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/script
+[1.014s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/script/99-turtlebot3-cdc.rules
+[1.015s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/script/create_udev_rules
+[1.015s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/ament_index/resource_index/package_run_dependencies/turtlebot3_bringup
+[1.015s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/ament_index/resource_index/parent_prefix_path/turtlebot3_bringup
+[1.016s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/environment/ament_prefix_path.sh
+[1.016s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/environment/ament_prefix_path.dsv
+[1.017s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/environment/path.sh
+[1.017s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/environment/path.dsv
+[1.017s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/local_setup.bash
+[1.017s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/local_setup.sh
+[1.017s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/local_setup.zsh
+[1.018s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/local_setup.dsv
+[1.018s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/package.dsv
+[1.018s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/ament_index/resource_index/packages/turtlebot3_bringup
+[1.018s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/cmake/turtlebot3_bringupConfig.cmake
+[1.018s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/cmake/turtlebot3_bringupConfig-version.cmake
+[1.019s] -- Installing: /home/sanjib28/turtlebot3_ws/install/turtlebot3_bringup/share/turtlebot3_bringup/package.xml
+[1.028s] Invoked command in '/home/sanjib28/turtlebot3_ws/build/turtlebot3_bringup' returned '0': AMENT_PREFIX_PATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_node:/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs:/home/sanjib28/turtlebot3_ws/install/turtlebot3_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_node:/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs:/home/sanjib28/turtlebot3_ws/install/turtlebot3_description:/opt/ros/foxy LD_LIBRARY_PATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/sanjib28/turtlebot3_ws/install/turtlebot3_msgs/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --install /home/sanjib28/turtlebot3_ws/build/turtlebot3_bringup
