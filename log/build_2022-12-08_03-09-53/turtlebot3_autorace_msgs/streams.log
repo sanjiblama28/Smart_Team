@@ -1,0 +1,35 @@
+[0.055s] Invoking command in '/home/sanjib28/turtlebot3_ws/build/turtlebot3_autorace_msgs': /usr/bin/cmake /home/sanjib28/turtlebot3_ws/src/turtlebot3_autorace_2020/turtlebot3_autorace_msgs -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/sanjib28/turtlebot3_ws/install/turtlebot3_autorace_msgs
+[0.401s] -- The C compiler identification is GNU 9.4.0
+[0.755s] -- The CXX compiler identification is GNU 9.4.0
+[0.779s] -- Check for working C compiler: /usr/bin/cc
+[0.924s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.925s] -- Detecting C compiler ABI info
+[1.045s] -- Detecting C compiler ABI info - done
+[1.081s] -- Detecting C compile features
+[1.083s] -- Detecting C compile features - done
+[1.095s] -- Check for working CXX compiler: /usr/bin/c++
+[1.244s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[1.244s] -- Detecting CXX compiler ABI info
+[1.386s] -- Detecting CXX compiler ABI info - done
+[1.411s] -- Detecting CXX compile features
+[1.412s] -- Detecting CXX compile features - done
+[1.433s] CMake Error at CMakeLists.txt:10 (find_package):
+[1.434s]   By not providing "Findcatkin.cmake" in CMAKE_MODULE_PATH this project has
+[1.434s]   asked CMake to find a package configuration file provided by "catkin", but
+[1.434s]   CMake did not find one.
+[1.434s] 
+[1.434s]   Could not find a package configuration file provided by "catkin" with any
+[1.434s]   of the following names:
+[1.434s] 
+[1.434s]     catkinConfig.cmake
+[1.434s]     catkin-config.cmake
+[1.434s] 
+[1.434s]   Add the installation prefix of "catkin" to CMAKE_PREFIX_PATH or set
+[1.435s]   "catkin_DIR" to a directory containing one of the above files.  If "catkin"
+[1.435s]   provides a separate development package or SDK, be sure it has been
+[1.435s]   installed.
+[1.435s] 
+[1.435s] 
+[1.435s] -- Configuring incomplete, errors occurred!
+[1.435s] See also "/home/sanjib28/turtlebot3_ws/build/turtlebot3_autorace_msgs/CMakeFiles/CMakeOutput.log".
+[1.441s] Invoked command in '/home/sanjib28/turtlebot3_ws/build/turtlebot3_autorace_msgs' returned '1': /usr/bin/cmake /home/sanjib28/turtlebot3_ws/src/turtlebot3_autorace_2020/turtlebot3_autorace_msgs -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/sanjib28/turtlebot3_ws/install/turtlebot3_autorace_msgs

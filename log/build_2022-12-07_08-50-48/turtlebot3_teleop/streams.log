@@ -1,0 +1,42 @@
+[1.497s] Invoking command in '/home/sanjib28/turtlebot3_ws/src/turtlebot3/turtlebot3_teleop': PYTHONPATH=/home/sanjib28/turtlebot3_ws/build/turtlebot3_teleop/prefix_override:/home/sanjib28/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/turtlebot3_teleop build --build-base /home/sanjib28/turtlebot3_ws/build/turtlebot3_teleop/build install --record /home/sanjib28/turtlebot3_ws/build/turtlebot3_teleop/install.log --single-version-externally-managed
+[2.090s] running egg_info
+[2.092s] creating ../../../build/turtlebot3_teleop/turtlebot3_teleop.egg-info
+[2.093s] writing ../../../build/turtlebot3_teleop/turtlebot3_teleop.egg-info/PKG-INFO
+[2.095s] writing dependency_links to ../../../build/turtlebot3_teleop/turtlebot3_teleop.egg-info/dependency_links.txt
+[2.104s] writing entry points to ../../../build/turtlebot3_teleop/turtlebot3_teleop.egg-info/entry_points.txt
+[2.104s] writing requirements to ../../../build/turtlebot3_teleop/turtlebot3_teleop.egg-info/requires.txt
+[2.105s] writing top-level names to ../../../build/turtlebot3_teleop/turtlebot3_teleop.egg-info/top_level.txt
+[2.109s] writing manifest file '../../../build/turtlebot3_teleop/turtlebot3_teleop.egg-info/SOURCES.txt'
+[2.202s] reading manifest file '../../../build/turtlebot3_teleop/turtlebot3_teleop.egg-info/SOURCES.txt'
+[2.204s] writing manifest file '../../../build/turtlebot3_teleop/turtlebot3_teleop.egg-info/SOURCES.txt'
+[2.204s] running build
+[2.205s] running build_py
+[2.205s] creating /home/sanjib28/turtlebot3_ws/build/turtlebot3_teleop/build
+[2.205s] creating /home/sanjib28/turtlebot3_ws/build/turtlebot3_teleop/build/lib
+[2.205s] creating /home/sanjib28/turtlebot3_ws/build/turtlebot3_teleop/build/lib/turtlebot3_teleop
+[2.206s] copying turtlebot3_teleop/__init__.py -> /home/sanjib28/turtlebot3_ws/build/turtlebot3_teleop/build/lib/turtlebot3_teleop
+[2.206s] creating /home/sanjib28/turtlebot3_ws/build/turtlebot3_teleop/build/lib/turtlebot3_teleop/script
+[2.212s] copying turtlebot3_teleop/script/teleop_keyboard.py -> /home/sanjib28/turtlebot3_ws/build/turtlebot3_teleop/build/lib/turtlebot3_teleop/script
+[2.213s] copying turtlebot3_teleop/script/__init__.py -> /home/sanjib28/turtlebot3_ws/build/turtlebot3_teleop/build/lib/turtlebot3_teleop/script
+[2.213s] running install
+[2.215s] running install_lib
+[2.217s] creating /home/sanjib28/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages/turtlebot3_teleop
+[2.218s] creating /home/sanjib28/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages/turtlebot3_teleop/script
+[2.218s] copying /home/sanjib28/turtlebot3_ws/build/turtlebot3_teleop/build/lib/turtlebot3_teleop/script/teleop_keyboard.py -> /home/sanjib28/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages/turtlebot3_teleop/script
+[2.219s] copying /home/sanjib28/turtlebot3_ws/build/turtlebot3_teleop/build/lib/turtlebot3_teleop/script/__init__.py -> /home/sanjib28/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages/turtlebot3_teleop/script
+[2.219s] copying /home/sanjib28/turtlebot3_ws/build/turtlebot3_teleop/build/lib/turtlebot3_teleop/__init__.py -> /home/sanjib28/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages/turtlebot3_teleop
+[2.220s] byte-compiling /home/sanjib28/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages/turtlebot3_teleop/script/teleop_keyboard.py to teleop_keyboard.cpython-38.pyc
+[2.223s] byte-compiling /home/sanjib28/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages/turtlebot3_teleop/script/__init__.py to __init__.cpython-38.pyc
+[2.223s] byte-compiling /home/sanjib28/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages/turtlebot3_teleop/__init__.py to __init__.cpython-38.pyc
+[2.223s] running install_data
+[2.224s] creating /home/sanjib28/turtlebot3_ws/install/turtlebot3_teleop/share/ament_index
+[2.225s] creating /home/sanjib28/turtlebot3_ws/install/turtlebot3_teleop/share/ament_index/resource_index
+[2.225s] creating /home/sanjib28/turtlebot3_ws/install/turtlebot3_teleop/share/ament_index/resource_index/packages
+[2.225s] copying resource/turtlebot3_teleop -> /home/sanjib28/turtlebot3_ws/install/turtlebot3_teleop/share/ament_index/resource_index/packages
+[2.225s] copying package.xml -> /home/sanjib28/turtlebot3_ws/install/turtlebot3_teleop/share/turtlebot3_teleop
+[2.226s] running install_egg_info
+[2.228s] Copying ../../../build/turtlebot3_teleop/turtlebot3_teleop.egg-info to /home/sanjib28/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages/turtlebot3_teleop-2.1.4-py3.8.egg-info
+[2.229s] running install_scripts
+[2.256s] Installing teleop_keyboard script to /home/sanjib28/turtlebot3_ws/install/turtlebot3_teleop/lib/turtlebot3_teleop
+[2.259s] writing list of installed files to '/home/sanjib28/turtlebot3_ws/build/turtlebot3_teleop/install.log'
+[2.311s] Invoked command in '/home/sanjib28/turtlebot3_ws/src/turtlebot3/turtlebot3_teleop' returned '0': PYTHONPATH=/home/sanjib28/turtlebot3_ws/build/turtlebot3_teleop/prefix_override:/home/sanjib28/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/turtlebot3_teleop build --build-base /home/sanjib28/turtlebot3_ws/build/turtlebot3_teleop/build install --record /home/sanjib28/turtlebot3_ws/build/turtlebot3_teleop/install.log --single-version-externally-managed
